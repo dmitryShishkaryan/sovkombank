@@ -11,7 +11,7 @@ import java.util.List;
 
 @Repository
 @AllArgsConstructor
-public class InvitesDaoDaoImpl implements InvitesDao {
+public class InvitesDaoImpl implements InvitesDao {
 
     private final DataSource dataSource;
 
