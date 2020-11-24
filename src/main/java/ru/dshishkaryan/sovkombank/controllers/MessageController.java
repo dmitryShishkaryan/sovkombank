@@ -2,14 +2,11 @@ package ru.dshishkaryan.sovkombank.controllers;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.dshishkaryan.sovkombank.domain.invitesDto.InvitesDto;
-import ru.dshishkaryan.sovkombank.exceptions.MessageException;
-import ru.dshishkaryan.sovkombank.exceptions.PhoneNumberException;
 import ru.dshishkaryan.sovkombank.services.interf.Invites;
 
 @RestController
@@ -18,11 +15,6 @@ import ru.dshishkaryan.sovkombank.services.interf.Invites;
 public class MessageController {
 
     private final Invites invites;
-
-    @ExceptionHandler({MessageException.class, PhoneNumberException.class})
-    public ResponseEntity<String> commonSettingsNotFoundExceptionHandler() {
-        return ResponseEntity.notFound().build();
-    }
 
     @PostMapping()
     public ResponseEntity<String> sendInvites(@RequestBody InvitesDto invitesDto) {
